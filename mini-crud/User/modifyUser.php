@@ -2,15 +2,20 @@
     // declaration de variable user_id qui 
     $user_id = $_GET['id'];
         if(isset($_POST['send'])) {
+            
             if(isset($_POST['username']) &&
                 isset($_POST['email']) &&
                 $_POST['username'] != "" &&
                 $_POST['email'] != "" 
-            ){
+            )
                 include_once __DIR__ . "/../connect_db.php";
-                extract($_POST);
-
+                // changer l'extract
+                $username = $_POST['username'];
+                $email = $_POST['email'];
+                // requete preparee
                 $sql = "UPDATE users SET username = '$username' , email = '$email' WHERE user_id = $user_id";
+                var_dump($sql);
+                die();
                 if (mysqli_query($connexion, $sql)) {
                         header("location:showUser.php");
                     } else {
