@@ -15,7 +15,7 @@
     <table>
         <thead>
             <?php
-                include_once "../connect_bdd.php";
+                include_once __DIR__ . "/../connect_db.php";
                 // users list
                 $sql = "SELECT * FROM users";
                 $result = mysqli_query($connexion, $sql);
