@@ -6,7 +6,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Mini CRUD Utilisateurs</title>
-    <link rel="stylesheet" href="style.css"> <!-- Ton CSS existant -->
     <style>
         body {
             font-family: Arial, sans-serif;

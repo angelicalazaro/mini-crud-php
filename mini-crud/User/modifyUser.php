@@ -18,7 +18,7 @@
                     }
                 } else {
                     header("location:showUser.php?message=EmptyFields");
-            }
+                }
         }
 ?>
 <!DOCTYPE html>
