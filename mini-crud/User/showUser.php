@@ -17,8 +17,11 @@
             <?php
                 include_once "../connect_bdd.php";
                 // users list
-                
-
+                $sql = "SELECT * FROM users";
+                $result = mysqli_query($connexion, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                // show users
+            ?>
             <tr>
                 <th>Nom</th>
                 <th>Email</th>
@@ -27,13 +30,31 @@
             </tr>
         </thead>
         <tbody>
+            <?php 
+                while($row = mysqli_fetch_assoc($result)) {
+            ?>
             <tr>
-                <td>text</td>
-                <td>text</td>
-                <td class="image"><a href="modifyUser.php?id"><img src="../images/write.png"></a></td>
-                <td class="image"><a href="deleteUser.php?id"><img src="../images/remove.png"></a></td>
-                <td></td>
+                <td><?=$row['username']?></td>
+                <td><?=$row['email']?></td>
+                <td class="image">
+                    <a href="modifyUser.php?id=<?=$row['user_id']?>">
+                        <img src="../images/write.png" alt="">
+                    </a>
+                </td>
+                <td class="image">
+                    <a href="deleteUser.php?id=<?=$row['user_id']?>">
+                        <img src="../images/remove.png" alt="">
+                    </a>
+                </td>
             </tr>
+
+            <?php
+            }
+        }
+        else {
+            echo " <p class='message'>0 utilisateur ! </p> ";
+        }
+        ?>
         </tbody>
     </table>
 </main>
