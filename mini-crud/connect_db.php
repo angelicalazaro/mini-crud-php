@@ -1,16 +1,17 @@
 <?php
-   $host = "localhost";
-   $username = "root";
-   $password = "";
-   $dbname = "mini-crud";
+require_once "config.php";
 
-// Create connexion
-
-    $connexion = mysqli_connect($host, $username, $password, $dbname);
-
-// Verify connexion
-
-    if (!$connexion) {
-        die("Connexion failed: " . mysqli_connect_error());
+    function connectDb() {
+        global $host_bdd, $user_bdd, $pwd_bdd;
+            try {
+            $connexion = new PDO(
+                'mysql:host=' . $host_bdd . ';dbname=mini-crud', 
+                $user_bdd, 
+                $pwd_bdd);
+                return $connexion;
+            } catch (PDOException $e) {
+                print "Erreur !: " . $e->getMessage() . "<br/>";
+                die();
+            }
+        
     }
- 
